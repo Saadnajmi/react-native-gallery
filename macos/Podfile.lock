@@ -1023,6 +1023,12 @@ PODS:
     - React-Core
   - RNCPicker (2.4.10):
     - React-Core
+  - RNLinearGradient (3.0.0-alpha.1):
+    - glog
+    - RCT-Folly (= 2022.05.16.00)
+    - React-Core
+  - RNSVG (15.2.0):
+    - React-Core
   - SocketRocket (0.7.0)
   - Yoga (1.14.0)
 
@@ -1080,6 +1086,8 @@ DEPENDENCIES:
   - ReactCommon/turbomodule/core (from `../node_modules/react-native-macos/ReactCommon`)
   - "RNCClipboard (from `../node_modules/@react-native-clipboard/clipboard`)"
   - "RNCPicker (from `../node_modules/@react-native-picker/picker`)"
+  - RNLinearGradient (from `../node_modules/react-native-linear-gradient`)
+  - RNSVG (from `../node_modules/react-native-svg`)
   - SocketRocket (from `../node_modules/react-native-macos/third-party-podspecs/SocketRocket.podspec`)
   - Yoga (from `../node_modules/react-native-macos/ReactCommon/yoga`)
 
@@ -1186,6 +1194,10 @@ EXTERNAL SOURCES:
     :path: "../node_modules/@react-native-clipboard/clipboard"
   RNCPicker:
     :path: "../node_modules/@react-native-picker/picker"
+  RNLinearGradient:
+    :path: "../node_modules/react-native-linear-gradient"
+  RNSVG:
+    :path: "../node_modules/react-native-svg"
   SocketRocket:
     :podspec: "../node_modules/react-native-macos/third-party-podspecs/SocketRocket.podspec"
   Yoga:
@@ -1243,6 +1255,8 @@ SPEC CHECKSUMS:
   ReactCommon: 391bb650df60503277a90cb69dd486802c030be1
   RNCClipboard: 090462274cc05b02628bd158baf6d73c3abe8441
   RNCPicker: 0bc2f0a29abcca7b7ed44a2d036aac9ab6d25700
+  RNLinearGradient: af339601faaf810fded616df9dc876792db88b0b
+  RNSVG: 43b64ed39c14ce830d840903774154ca0c1f27ec
   SocketRocket: f6c6249082c011e6de2de60ed641ef8bbe0cfac9
   Yoga: dd0f2dde9c2bf2398b406740154bd99d5293aed8
 
