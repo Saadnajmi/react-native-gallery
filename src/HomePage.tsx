@@ -131,7 +131,7 @@ export const HomePage: React.FunctionComponent<{}> = ({navigation}) => {
           <View style={styles.container}>
             <ListOfComponents
               heading="Recently added samples"
-              items={RNGalleryList.filter((item) => item.new)}
+              items={RNGalleryList}
               navigation={navigation}
             />
             <ListOfComponents
