@@ -384,38 +384,44 @@ function CustomDrawerContent({navigation}) {
     return <View />;
   }
   return (
-    <View style={styles.drawer}>
-      <DrawerListItem
-        route="Home"
-        label="Home"
-        icon="&#xE80F;"
-        fluentIcon={<Home16Regular />}
-        navigation={navigation}
-        currentRoute={currentRoute}
-      />
-      <DrawerListItem
-        route="All samples"
-        label="All samples"
-        icon="&#xE71D;"
-        fluentIcon={<TextBulletList16Regular />}
-        navigation={navigation}
-        currentRoute={currentRoute}
-      />
-      <View style={styles.drawerDivider} />
-      {/* TODO: Rectify Scroller padding */}
-      <ScrollView>
-        <DrawerListView navigation={navigation} currentRoute={currentRoute} />
-      </ScrollView>
-      <View style={styles.drawerDivider} />
-      <DrawerListItem
-        route="Settings"
-        label="Settings"
-        icon="&#xE713;"
-        fluentIcon={<Settings16Regular />}
-        navigation={navigation}
-        currentRoute={currentRoute}
-      />
-    </View>
+    <VibrancyView
+      blendingMode="behindWindow"
+      state="followsWindowActiveState"
+      material="sidebar"
+      style={styles.navBar}>
+      <View style={styles.drawer}>
+        <DrawerListItem
+          route="Home"
+          label="Home"
+          icon="&#xE80F;"
+          fluentIcon={<Home16Regular />}
+          navigation={navigation}
+          currentRoute={currentRoute}
+        />
+        <DrawerListItem
+          route="All samples"
+          label="All samples"
+          icon="&#xE71D;"
+          fluentIcon={<TextBulletList16Regular />}
+          navigation={navigation}
+          currentRoute={currentRoute}
+        />
+        <View style={styles.drawerDivider} />
+        {/* TODO: Rectify Scroller padding */}
+        <ScrollView>
+          <DrawerListView navigation={navigation} currentRoute={currentRoute} />
+        </ScrollView>
+        <View style={styles.drawerDivider} />
+        <DrawerListItem
+          route="Settings"
+          label="Settings"
+          icon="&#xE713;"
+          fluentIcon={<Settings16Regular />}
+          navigation={navigation}
+          currentRoute={currentRoute}
+        />
+      </View>
+    </VibrancyView>
   );
 }
 
@@ -505,13 +511,7 @@ export function ScreenWrapper({
 
   return (
     <View style={styles.container}>
-      <VibrancyView
-        blendingMode="behindWindow"
-        state="followsWindowActiveState"
-        material="sidebar"
-        style={styles.navBar}>
-        <CustomDrawerContent navigation={navigation} />
-      </VibrancyView>
+      <CustomDrawerContent navigation={navigation} />
       <View style={[styles.navItem, doNotInset ? {} : styles.insetNavItem]}>
         {children}
       </View>
