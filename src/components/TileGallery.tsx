@@ -77,7 +77,7 @@ const createStyles = (isHovered: boolean, _isPressing: boolean) =>
       padding: 24,
       gap: 4,
       width: 198,
-      height: 220,
+      // height: 220,
       alignItems: 'flex-start',
     },
     tileIconContent: {
@@ -126,7 +126,11 @@ const HeaderTile = (props: HeaderTileType): JSX.Element => {
     //   material="sidebar"
     //   style={styles.headerTile}>
     <Pressable
-      style={styles.headerTile}
+      style={[
+        styles.headerTile,
+        isPressing && {backgroundColor: 'lightgray'},
+        {cursor: 'pointer'},
+      ]}
       onPress={() => Linking.openURL(props.link)}
       onPressIn={() => setIsPressing(true)}
       onPressOut={() => setIsPressing(false)}
@@ -136,9 +140,9 @@ const HeaderTile = (props: HeaderTileType): JSX.Element => {
       <View style={styles.tileIconContent}>{props.children}</View>
       <Text style={styles.tileTitle}>{props.title}</Text>
       <Text style={styles.tileDescription}>{props.description}</Text>
-      <Text style={styles.tileLinkIcon} accessible={false}>
+      {/* <Text style={styles.tileLinkIcon} accessible={false}>
         {openInNewWindowIcon}
-      </Text>
+      </Text> */}
     </Pressable>
     // </VibrancyView>
   );
