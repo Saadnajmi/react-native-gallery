@@ -2,7 +2,6 @@ import React from 'react';
 import {
   View,
   StyleSheet,
-  TouchableHighlight,
   Text,
   Platform,
   PlatformColor,
@@ -12,26 +11,18 @@ import {
   I18nManager,
 } from 'react-native';
 import type {ColorValue} from 'react-native';
-import {useNavigation, DrawerActions} from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 import {VibrancyView} from '@fluentui-react-native/vibrancy-view';
-import {getDrawerStatusFromState} from '@react-navigation/drawer';
 import RNGalleryList, {RNGalleryCategories} from '../RNGalleryList';
-import {ColorWithSystemEffectMacOS} from 'react-native-macos';
 import {
   ChevronDown12Filled,
   ChevronDown12Regular,
-  ChevronDown16Filled,
-  ChevronDown16Regular,
   ChevronLeft12Filled,
   ChevronLeft12Regular,
-  ChevronLeft16Filled,
-  ChevronLeft16Regular,
   ChevronRight12Filled,
   ChevronRight12Regular,
-  ChevronRight16Filled,
-  ChevronRight16Regular,
   Home16Regular,
-  List16Regular,
+  Settings16Regular,
   TextBulletList16Regular,
 } from '@fluentui/react-native-icons';
 
@@ -140,7 +131,7 @@ const styles = StyleSheet.create({
     backgroundColor: drawerBackgroundColor,
     // borderRadius: 8,
     paddingTop: 53,
-    // padding: 10,
+    padding: 10,
     height: '100%',
   },
   drawerText: {
@@ -302,13 +293,13 @@ const DrawerCollapsibleCategory = ({
         onHoverIn={() => setIsHovered(true)}
         onHoverOut={() => setIsHovered(false)}
         accessible={false}>
-        <View style={styles.indentContainer}>
+        {/* <View style={styles.indentContainer}>
           <SelectedNavigationItemPill
             currentRoute={currentRoute}
             itemRoute={categoryRoute}
           />
-          {renderedIcon}
-        </View>
+        </View> */}
+        {renderedIcon}
         <Text accessible={false} style={styles.drawerText}>
           {categoryLabel}
         </Text>
@@ -412,7 +403,7 @@ function CustomDrawerContent({navigation}) {
       />
       <View style={styles.drawerDivider} />
       {/* TODO: Rectify Scroller padding */}
-      <ScrollView style={{paddingEnd: 15}}>
+      <ScrollView>
         <DrawerListView navigation={navigation} currentRoute={currentRoute} />
       </ScrollView>
       <View style={styles.drawerDivider} />
@@ -420,6 +411,7 @@ function CustomDrawerContent({navigation}) {
         route="Settings"
         label="Settings"
         icon="&#xE713;"
+        fluentIcon={<Settings16Regular />}
         navigation={navigation}
         currentRoute={currentRoute}
       />
@@ -472,7 +464,6 @@ const DrawerListItem = ({
   );
 
   const isSelected = currentRoute === route;
-  const selectedStyle = {backgroundColor: 'lightgrey'};
 
   return (
     <Pressable
@@ -483,14 +474,17 @@ const DrawerListItem = ({
       onHoverOut={() => setIsHovered(false)}
       accessibilityRole="button"
       accessibilityLabel={label}
-      style={localStyles.drawerListItem}>
-      <View style={styles.indentContainer}>
-        <SelectedNavigationItemPill
+      style={[
+        localStyles.drawerListItem,
+        isSelected && {backgroundColor: 'lightgrey'},
+      ]}>
+      {/* <View style={styles.indentContainer}> */}
+      {/* <SelectedNavigationItemPill
           currentRoute={currentRoute}
           itemRoute={route}
-        />
-        {renderedIcon}
-      </View>
+        /> */}
+      {renderedIcon}
+      {/* </View> */}
       <Text accessible={false} style={styles.drawerText}>
         {label}
       </Text>
