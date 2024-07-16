@@ -16,7 +16,27 @@ import {HomeComponentTile} from './components/ControlItem';
 
 const textColor = Platform.select<ColorValue>({
   windows: PlatformColor('TextFillColorPrimaryBrush'),
+  macos: PlatformColor('labelColor'),
   default: 'black',
+});
+
+const appleTypography = StyleSheet.create({
+  largeTitle: {
+    fontSize: 26,
+    lineHeight: 32,
+  },
+  headline: {
+    fontSize: 13,
+    lineHeight: 16,
+    fontWeight: 'bold',
+    color: textColor,
+  },
+  title1: {
+    fontSize: 22,
+    lineHeight: 26,
+    fontWeight: 'regular',
+    color: textColor,
+  },
 });
 
 const createStyles = () =>
@@ -69,7 +89,9 @@ const ListOfComponents = ({
       accessibilityLabel={heading + 'components'}
       accessible={true}
       accessibilityRole="none">
-      <Text accessibilityRole="header" style={styles.heading}>
+      <Text
+        accessibilityRole="header"
+        style={[styles.heading, appleTypography.title1]}>
         {heading}
       </Text>
       <View style={styles.controlItems}>
@@ -131,7 +153,9 @@ const ComponentListPage = ({route, navigation}: ComponentListPageProps) => {
             </View>
           ) : (
             <View style={styles.container}>
-              <Text accessibilityRole={'header'} style={styles.title}>
+              <Text
+                accessibilityRole={'header'}
+                style={[styles.title, appleTypography.largeTitle]}>
                 All samples
               </Text>
               <GroupedListOfAllComponents
