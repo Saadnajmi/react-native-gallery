@@ -473,12 +473,12 @@ export const RNGalleryList: Array<IRNGalleryExample> = [
     subtitle: 'An element to render and control playback of motion graphics.',
     new: true,
   },
-  // ...RNGalleryCategories.map((category) => ({
-  //   key: `Category: ${category.label}`,
-  //   component: ComponentListPage,
-  //   textIcon: category.icon,
-  //   type: '',
-  // })),
+  ...RNGalleryCategories.map((category) => ({
+    key: `Category: ${category.label}`,
+    component: ComponentListPage,
+    textIcon: category.icon,
+    type: '',
+  })),
 ];
 
 export default RNGalleryList;
