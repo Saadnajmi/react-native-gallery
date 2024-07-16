@@ -90,11 +90,11 @@ let RNGalleryCategories = [
   },
   {label: 'Collections', icon: '\uE80A', fluentIcon: <Grid16Regular />},
   {label: 'Date & time', icon: '\uEC92', fluentIcon: <Calendar16Regular />},
-  {
-    label: 'Dialogs & flyouts',
-    icon: '\uE8BD',
-    fluentIcon: <Comment16Regular />,
-  },
+  // {
+  //   label: 'Dialogs & flyouts',
+  //   icon: '\uE8BD',
+  //   fluentIcon: <Comment16Regular />,
+  // },
   {
     label: 'Layout',
     icon: '\uE8A1',
@@ -156,15 +156,15 @@ export const RNGalleryList: Array<IRNGalleryExample> = [
     subtitle: 'A control that responds to user input and raises a Click event.',
     type: 'Basic Input',
   },
-  {
-    key: 'CheckBox',
-    component: CheckBoxExamplePage,
-    textIcon: '\uE73A',
-    imageIcon: require('../assets/ControlImages/Checkbox.png'),
-    fluentIcon: <CheckboxChecked16Regular />,
-    subtitle: 'A control that a user can select or clear.',
-    type: 'Basic Input',
-  },
+  // {
+  //   key: 'CheckBox',
+  //   component: CheckBoxExamplePage,
+  //   textIcon: '\uE73A',
+  //   imageIcon: require('../assets/ControlImages/Checkbox.png'),
+  //   fluentIcon: <CheckboxChecked16Regular />,
+  //   subtitle: 'A control that a user can select or clear.',
+  //   type: 'Basic Input',
+  // },
   {
     key: 'Clipboard',
     component: ClipboardExamplePage,
@@ -197,15 +197,15 @@ export const RNGalleryList: Array<IRNGalleryExample> = [
   //   textIcon: '\uE703',
   //   type: 'Status and Info',
   // },
-  {
-    key: 'Expander',
-    component: ExpanderExamplePage,
-    textIcon: '\uE8C4',
-    imageIcon: require('../assets/ControlImages/Expander.png'),
-    subtitle:
-      'A container with a header that can be expanded to show a body with more content.',
-    type: 'Layout',
-  },
+  // {
+  //   key: 'Expander',
+  //   component: ExpanderExamplePage,
+  //   textIcon: '\uE8C4',
+  //   imageIcon: require('../assets/ControlImages/Expander.png'),
+  //   subtitle:
+  //     'A container with a header that can be expanded to show a body with more content.',
+  //   type: 'Layout',
+  // },
   {
     key: 'FlatList ',
     component: FlatListExamplePage,
@@ -233,14 +233,14 @@ export const RNGalleryList: Array<IRNGalleryExample> = [
     subtitle: 'A control to display image content.',
     type: 'Media',
   },
-  {
-    key: 'Linear Gradient',
-    component: LinearGradientExamplePage,
-    textIcon: '\uE790',
-    type: 'Media',
-    subtitle: 'Render a horizontal or vertical color gradient.',
-    new: true,
-  },
+  // {
+  //   key: 'Linear Gradient',
+  //   component: LinearGradientExamplePage,
+  //   textIcon: '\uE790',
+  //   type: 'Media',
+  //   subtitle: 'Render a horizontal or vertical color gradient.',
+  //   new: true,
+  // },
   {
     key: 'Networking',
     component: NetworkExamplePage,
@@ -320,22 +320,22 @@ export const RNGalleryList: Array<IRNGalleryExample> = [
       'A container control that lets the user pan and zoom its content.',
     type: 'Scrolling',
   },
-  {
-    key: 'SensitiveInfo',
-    component: SensitiveInfoExamplePage,
-    textIcon: '\uE72E',
-    fluentIcon: <LockClosed16Regular />,
-    type: 'Status and Info',
-  },
-  {
-    key: 'Slider',
-    component: SliderExamplePage,
-    textIcon: '\uE9E9',
-    imageIcon: require('../assets/ControlImages/Slider.png'),
-    subtitle:
-      'A control that lets the user select from a range of values by moving a Thumb control along a track.',
-    type: 'Basic Input',
-  },
+  // {
+  //   key: 'SensitiveInfo',
+  //   component: SensitiveInfoExamplePage,
+  //   textIcon: '\uE72E',
+  //   fluentIcon: <LockClosed16Regular />,
+  //   type: 'Status and Info',
+  // },
+  // {
+  //   key: 'Slider',
+  //   component: SliderExamplePage,
+  //   textIcon: '\uE9E9',
+  //   imageIcon: require('../assets/ControlImages/Slider.png'),
+  //   subtitle:
+  //     'A control that lets the user select from a range of values by moving a Thumb control along a track.',
+  //   type: 'Basic Input',
+  // },
   {
     key: 'Sketch',
     component: SketchExamplePage,
@@ -439,13 +439,13 @@ export const RNGalleryList: Array<IRNGalleryExample> = [
       'A Microsoft Edge (Chromium) based control that hosts HTML content in an app.',
     type: 'Media',
   },
-  {
-    key: 'WindowsHello',
-    component: WindowsHelloExamplePage,
-    textIcon: '\uE890',
-    fluentIcon: <Eye16Regular />,
-    type: 'Status and Info',
-  },
+  // {
+  //   key: 'WindowsHello',
+  //   component: WindowsHelloExamplePage,
+  //   textIcon: '\uE890',
+  //   fluentIcon: <Eye16Regular />,
+  //   type: 'Status and Info',
+  // },
   {
     key: 'VirtualizedList',
     component: VirtualizedListExamplePage,
@@ -456,14 +456,14 @@ export const RNGalleryList: Array<IRNGalleryExample> = [
       'The base implementation for FlatList and SectionList, which can be used as alternative if you need more flexibility.',
     type: 'Collections',
   },
-  {
-    key: 'Xaml',
-    component: XamlExamplePage,
-    textIcon: '\uE70F',
-    subtitle: 'Directly access any native XAML control.',
-    type: 'Layout',
-    recentlyUpdated: true,
-  },
+  // {
+  //   key: 'Xaml',
+  //   component: XamlExamplePage,
+  //   textIcon: '\uE70F',
+  //   subtitle: 'Directly access any native XAML control.',
+  //   type: 'Layout',
+  //   recentlyUpdated: true,
+  // },
   {
     key: 'LottieAnimations',
     component: LottieAnimationsExamplePage,
