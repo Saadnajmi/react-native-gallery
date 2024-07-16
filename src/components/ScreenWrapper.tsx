@@ -270,15 +270,31 @@ const DrawerCollapsibleCategory = ({
   const isRTL = I18nManager.isRTL;
   if (isPressed) {
     if (isRTL) {
-      chevron = <ChevronLeft12Filled />;
+      chevron = (
+        <ChevronLeft12Filled
+          primaryFill={PlatformColor('secondaryLabelColor')}
+        />
+      );
     } else {
-      chevron = <ChevronRight12Filled />;
+      chevron = (
+        <ChevronRight12Filled
+          primaryFill={PlatformColor('secondaryLabelColor')}
+        />
+      );
     }
   } else {
     if (isRTL) {
-      chevron = <ChevronLeft12Regular />;
+      chevron = (
+        <ChevronLeft12Regular
+          primaryFill={PlatformColor('secondaryLabelColor')}
+        />
+      );
     } else {
-      chevron = <ChevronRight12Regular />;
+      chevron = (
+        <ChevronRight12Regular
+          primaryFill={PlatformColor('secondaryLabelColor')}
+        />
+      );
     }
   }
   // }
