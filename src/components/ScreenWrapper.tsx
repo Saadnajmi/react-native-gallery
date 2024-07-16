@@ -203,7 +203,7 @@ const createDrawerListItemStyles = (isHovered: boolean, isPressed: boolean) =>
       flexDirection: 'row',
       alignItems: 'center',
       padding: 5,
-      paddingHorizontal: 15,
+      paddingHorizontal: 10,
       borderRadius: 4,
       borderCurve: 'continuous',
       gap: 4,
