@@ -16,8 +16,6 @@ import {useNavigation} from '@react-navigation/native';
 import {VibrancyView} from '@fluentui-react-native/vibrancy-view';
 import RNGalleryList, {RNGalleryCategories} from '../RNGalleryList';
 import {
-  ChevronDown12Filled,
-  ChevronDown12Regular,
   ChevronLeft12Filled,
   ChevronLeft12Regular,
   ChevronRight12Filled,
@@ -312,7 +310,7 @@ const DrawerCollapsibleCategory = ({
           style={[
             styles.drawerText,
             {
-              fontSize: 10,
+              fontSize: 11,
               fontWeight: 'bold',
               color: PlatformColor('secondaryLabelColor'),
             },
