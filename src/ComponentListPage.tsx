@@ -37,6 +37,12 @@ const appleTypography = StyleSheet.create({
     fontWeight: 'regular',
     color: textColor,
   },
+  title1Emphasized: {
+    fontSize: 22,
+    lineHeight: 26,
+    fontWeight: 'bold',
+    color: textColor,
+  },
 });
 
 const createStyles = () =>
@@ -91,7 +97,7 @@ const ListOfComponents = ({
       accessibilityRole="none">
       <Text
         accessibilityRole="header"
-        style={[styles.heading, appleTypography.title1]}>
+        style={[styles.heading, appleTypography.title1Emphasized]}>
         {heading}
       </Text>
       <View style={styles.controlItems}>
