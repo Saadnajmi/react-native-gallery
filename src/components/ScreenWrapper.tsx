@@ -491,7 +491,7 @@ const DrawerListItem = ({
       accessibilityLabel={label}
       style={[
         localStyles.drawerListItem,
-        isSelected && {backgroundColor: 'lightgrey'},
+        isSelected && {backgroundColor: 'rgb(208,206,205)'},
       ]}>
       {/* <View style={styles.indentContainer}> */}
       {/* <SelectedNavigationItemPill
