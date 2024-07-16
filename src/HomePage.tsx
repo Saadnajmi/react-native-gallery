@@ -93,7 +93,7 @@ const PageTitle = () => {
   return (
     // https://github.com/microsoft/WinUI-Gallery/blob/c3cf8db5607c71f5df51fd4eb45d0ce6e932d338/WinUIGallery/Controls/HomePageHeaderImage.xaml#L19
     <View style={styles.heroGradient}>
-      <Image
+      {/* <Image
         source={require('../assets/GalleryHeaderImage.png')}
         style={[
           styles.heroBackgroundImage,
@@ -104,7 +104,7 @@ const PageTitle = () => {
             // margin: 20,
           },
         ]}
-      />
+      /> */}
       <View style={styles.pageHeader}>
         <View style={styles.pageTitleContainer}>
           <Text
