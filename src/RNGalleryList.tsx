@@ -259,13 +259,13 @@ export const RNGalleryList: Array<IRNGalleryExample> = [
     subtitle: 'Load resources from a remote URL.',
     new: true,
   },
-  {
-    key: 'Permissions',
-    component: PermissionsExamplePage,
-    textIcon: '\uED2C',
-    fluentIcon: <Password16Regular />,
-    type: 'Status and Info',
-  },
+  // {
+  //   key: 'Permissions',
+  //   component: PermissionsExamplePage,
+  //   textIcon: '\uED2C',
+  //   fluentIcon: <Password16Regular />,
+  //   type: 'Status and Info',
+  // },
   {
     key: 'Picker',
     component: PickerExamplePage,
