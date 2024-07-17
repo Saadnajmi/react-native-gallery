@@ -552,7 +552,6 @@ export function ScreenWrapper({
 
   return (
     <View style={styles.container}>
-      <CustomDrawerContent navigation={navigation} />
       <View style={[styles.navItem, doNotInset ? {} : styles.insetNavItem]}>
         {children}
       </View>
