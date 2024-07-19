@@ -7,6 +7,7 @@ import {
   Pressable,
   Text,
   ScrollView,
+  GestureResponderEvent,
 } from 'react-native';
 import RNGalleryList, {RNGalleryCategories} from './RNGalleryList';
 import React from 'react';
@@ -79,14 +80,12 @@ const createDrawerListItemStyles = (isHovered: boolean, isPressed: boolean) =>
   });
 
 type SelectedNavigationItemPillProps = {
-  currentRoute: string;
-  itemRoute: string;
+  isSelected: boolean;
 };
 const SelectedNavigationItemPill = ({
-  currentRoute,
-  itemRoute,
+  isSelected,
 }: SelectedNavigationItemPillProps) => {
-  if (currentRoute !== itemRoute) {
+  if (!isSelected) {
     return <View />;
   }
 
@@ -94,18 +93,16 @@ const SelectedNavigationItemPill = ({
 };
 
 type DrawerListItemProps = {
-  route: string;
   label: string;
   icon?: string;
-  navigation: any;
-  currentRoute: string;
+  isSelected: boolean;
+  onPress: (event: GestureResponderEvent) => void;
 };
 const DrawerListItem = ({
-  route,
   label,
   icon,
-  navigation,
-  currentRoute,
+  isSelected,
+  onPress,
 }: DrawerListItemProps) => {
   const [isHovered, setIsHovered] = React.useState(false);
   const [isPressed, setIsPressed] = React.useState(false);
@@ -113,7 +110,7 @@ const DrawerListItem = ({
   const localStyles = createDrawerListItemStyles(isHovered, isPressed);
   return (
     <Pressable
-      onPress={() => navigation.navigate(route)}
+      onPress={onPress}
       onPressIn={() => setIsPressed(true)}
       onPressOut={() => setIsPressed(false)}
       onHoverIn={() => setIsHovered(true)}
@@ -122,10 +119,7 @@ const DrawerListItem = ({
       accessibilityLabel={label}
       style={localStyles.drawerListItem}>
       <View style={styles.indentContainer}>
-        <SelectedNavigationItemPill
-          currentRoute={currentRoute}
-          itemRoute={route}
-        />
+        <SelectedNavigationItemPill isSelected={isSelected} />
         <Text accessible={false} style={styles.icon}>
           {icon}
         </Text>
@@ -174,6 +168,8 @@ const DrawerCollapsibleCategory = ({
     }
   };
 
+  const isCategorySelected = currentRoute === categoryRoute;
+
   return (
     <View
       style={styles.category}
@@ -190,10 +186,7 @@ const DrawerCollapsibleCategory = ({
         onHoverOut={() => setIsHovered(false)}
         accessible={false}>
         <View style={styles.indentContainer}>
-          <SelectedNavigationItemPill
-            currentRoute={currentRoute}
-            itemRoute={categoryRoute}
-          />
+          <SelectedNavigationItemPill isSelected={isCategorySelected} />
           <Text accessible={false} style={styles.icon}>
             {categoryIcon}
           </Text>
@@ -221,7 +214,7 @@ const DrawerCollapsibleCategory = ({
   );
 };
 
-const DrawerListView = (props) => {
+const DrawerListView = (props: {currentRoute: string; navigation: any}) => {
   // Home and Settings drawer items have already been manually loaded.
   const filterPredicate = (item) => item.type !== '';
   const filteredList = RNGalleryList.filter(filterPredicate);
@@ -279,18 +272,16 @@ export function ComponentList(props: DrawerContentComponentProps) {
         <Text style={styles.icon}>&#xE700;</Text>
       </Pressable>
       <DrawerListItem
-        route="Home"
         label="Home"
         icon="&#xE80F;"
-        navigation={navigation}
-        currentRoute={currentRoute}
+        onPress={() => navigation.navigate('Home')}
+        isSelected={currentRoute === 'Home'}
       />
       <DrawerListItem
-        route="All samples"
         label="All samples"
         icon="&#xE71D;"
-        navigation={navigation}
-        currentRoute={currentRoute}
+        onPress={() => navigation.navigate('All samples')}
+        isSelected={currentRoute === 'All samples'}
       />
       <View style={styles.drawerDivider} />
       <ScrollView>
@@ -298,11 +289,10 @@ export function ComponentList(props: DrawerContentComponentProps) {
       </ScrollView>
       <View style={styles.drawerDivider} />
       <DrawerListItem
-        route="Settings"
         label="Settings"
         icon="&#xE713;"
-        navigation={navigation}
-        currentRoute={currentRoute}
+        onPress={() => navigation.navigate('Settings')}
+        isSelected={currentRoute === 'Settings'}
       />
     </View>
   );
