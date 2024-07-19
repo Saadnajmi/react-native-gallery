@@ -1,4 +1,5 @@
-import {getDrawerStatusFromState} from '@react-navigation/drawer';
+import {useDrawerStatus} from '@react-navigation/drawer';
+import type {DrawerContentComponentProps} from '@react-navigation/drawer';
 import {
   StyleSheet,
   PlatformColor,
@@ -259,12 +260,10 @@ const DrawerListView = (props) => {
   );
 };
 
-export function ComponentList({navigation}) {
-  const isDrawerOpen =
-    getDrawerStatusFromState(navigation.getState()) === 'open';
-
-  const navigationState = navigation.getState();
-  const currentRoute = navigationState.routeNames[navigationState.index];
+export function ComponentList(props: DrawerContentComponentProps) {
+  const {navigation, state} = props;
+  const isDrawerOpen = useDrawerStatus() === 'open';
+  const currentRoute = state.routeNames[state.index];
 
   if (!isDrawerOpen) {
     return <View />;
