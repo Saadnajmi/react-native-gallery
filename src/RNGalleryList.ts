@@ -44,8 +44,13 @@ import {NetworkExamplePage} from './examples/NetworkExamplePage';
 import {SvgExamplePage} from './examples/SvgExamplePage';
 import {LottieAnimationsExamplePage} from './examples/LottieAnimationsExamplePage';
 
+export interface IRNGalleryCategory {
+  label: string;
+  icon: string;
+}
+
 // https://github.com/microsoft/WinUI-Gallery/blob/c8f04135579c08c9a80711dcad7247f259891c79/WinUIGallery/DataModel/ControlInfoData.json#L803
-let RNGalleryCategories = [
+let RNGalleryCategories: IRNGalleryCategory[] = [
   {label: 'Basic Input', icon: '\uE73A'},
   {label: 'Collections', icon: '\uE80A'},
   {label: 'Date & time', icon: '\uEC92'},
@@ -59,7 +64,7 @@ let RNGalleryCategories = [
   {label: 'Legacy', icon: '\uE96A'},
 ];
 
-interface IRNGalleryExample {
+export interface IRNGalleryExample {
   key: string;
   component: React.ElementType;
   textIcon: string;

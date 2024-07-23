@@ -8,8 +8,10 @@ import {
   Text,
   ScrollView,
   GestureResponderEvent,
+  PressableProps,
 } from 'react-native';
-import RNGalleryList, {RNGalleryCategories} from './RNGalleryList';
+import {RNGalleryList, RNGalleryCategories} from './RNGalleryList';
+import type {IRNGalleryCategory, IRNGalleryExample} from './RNGalleryList';
 import React from 'react';
 
 const styles = StyleSheet.create({
@@ -96,16 +98,23 @@ type DrawerListItemProps = {
   label: string;
   icon?: string;
   isSelected: boolean;
-  onPress: (event: GestureResponderEvent) => void;
+  onItemPress: (event: GestureResponderEvent, label: string) => void;
 };
 const DrawerListItem = ({
   label,
   icon,
   isSelected,
-  onPress,
+  onItemPress,
 }: DrawerListItemProps) => {
   const [isHovered, setIsHovered] = React.useState(false);
   const [isPressed, setIsPressed] = React.useState(false);
+
+  const onPress = React.useCallback(
+    (event: GestureResponderEvent) => {
+      onItemPress(event, label);
+    },
+    [label, onItemPress],
+  );
 
   const localStyles = createDrawerListItemStyles(isHovered, isPressed);
   return (
@@ -135,7 +144,9 @@ type DrawerCollapsibleCategoryProps = {
   categoryLabel: string;
   categoryIcon: string;
   items: any;
-  navigation: any;
+  onPress: (event: GestureResponderEvent) => void;
+  onItemPress: (key: string) => void;
+  // navigation: any;
   currentRoute: string;
   containsCurrentRoute: boolean;
 };
@@ -143,7 +154,8 @@ const DrawerCollapsibleCategory = ({
   categoryLabel,
   categoryIcon,
   items,
-  navigation,
+  onPress,
+  onItemPress,
   currentRoute,
   containsCurrentRoute,
 }: DrawerCollapsibleCategoryProps) => {
@@ -156,13 +168,14 @@ const DrawerCollapsibleCategory = ({
   const [isPressed, setIsPressed] = React.useState(false);
   const localStyles = createDrawerListItemStyles(isHovered, isPressed);
 
-  const onPress = () => {
+  const onPressOuter = (_event: GestureResponderEvent) => {
     if (isExpanded && containsCurrentRoute) {
       // Drawer will automatically close when navigating to a new route, by design:
       // https://github.com/react-navigation/react-navigation/pull/4394
       // As a workaround, we allow you to get a category page when the category
       // is expanded but you aren't on the category page now.
-      navigation.navigate(categoryRoute, {category: categoryLabel});
+      // navigation.navigate(categoryRoute, {category: categoryLabel});
+      onPress(_event);
     } else {
       setIsExpanded(!isExpanded);
     }
@@ -179,7 +192,7 @@ const DrawerCollapsibleCategory = ({
       onAccessibilityTap={() => setIsExpanded(!isExpanded)}>
       <Pressable
         style={localStyles.drawerListItem}
-        onPress={() => onPress()}
+        onPress={onPressOuter}
         onPressIn={() => setIsPressed(true)}
         onPressOut={() => setIsPressed(false)}
         onHoverIn={() => setIsHovered(true)}
@@ -201,13 +214,12 @@ const DrawerCollapsibleCategory = ({
         </View>
       </Pressable>
       {isExpanded &&
-        items.map((item) => (
+        items.map((item: IRNGalleryCategory) => (
           <DrawerListItem
             key={item.label}
-            route={item.label}
             label={item.label}
-            navigation={navigation}
-            currentRoute={currentRoute}
+            isSelected={currentRoute === item.label}
+            onPress={onItemPress}
           />
         ))}
     </View>
@@ -216,7 +228,7 @@ const DrawerCollapsibleCategory = ({
 
 const DrawerListView = (props: {currentRoute: string; navigation: any}) => {
   // Home and Settings drawer items have already been manually loaded.
-  const filterPredicate = (item) => item.type !== '';
+  const filterPredicate = (item: IRNGalleryExample) => item.type !== '';
   const filteredList = RNGalleryList.filter(filterPredicate);
 
   let categoryWithCurrentRoute = '';
@@ -231,7 +243,7 @@ const DrawerListView = (props: {currentRoute: string; navigation: any}) => {
   filteredList.forEach((item) => {
     let category = item.type;
     let categoryList = categoryMap.get(category);
-    categoryList?.push({label: item.key, icon: item.icon});
+    categoryList?.push({label: item.key});
     if (item.key === props.currentRoute) {
       categoryWithCurrentRoute = category;
     }
@@ -244,7 +256,10 @@ const DrawerListView = (props: {currentRoute: string; navigation: any}) => {
           categoryLabel={category.label}
           categoryIcon={category.icon}
           items={categoryMap.get(category.label)}
-          navigation={props.navigation}
+          onPress={() => {
+            navigation;
+          }}
+          // onPress=(()=>{ navigation.navigate(categoryRoute, {category: categoryLabel})})
           currentRoute={props.currentRoute}
           containsCurrentRoute={categoryWithCurrentRoute === category.label}
         />
